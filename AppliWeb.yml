@@ -1,0 +1,23 @@
+---
+
+- hosts: localhost
+  become: yes
+  #become_method: su
+  tasks:
+    - name: Configure Apache
+      copy:
+        src: /home/momo/index.html
+        dest: /srv/www/htdocs
+      register: ConfApache
+      notify: Restart Apache
+
+    - debug:
+        msg: "{{ ConfApache }}"
+
+  handlers:
+    - name: Restart Apache
+      shell: rcapache2 restart
+      
+        
+
+
