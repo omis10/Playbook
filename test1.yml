@@ -1,0 +1,13 @@
+---
+
+- hosts: localhost
+  become: yes
+  #become_method: su
+  tasks:
+      - debug: var=ansible_date_time.date
+      
+      - debug: msg="{{ ansible_date_time.year}}"
+        
+
+      - debug: msg=" la date est {{ ansible_date_time.date|replace('-','') }}" 
+

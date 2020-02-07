@@ -1,0 +1,27 @@
+---
+
+- hosts: localhost
+  become: yes
+  #become_method: su
+  tasks:
+
+  - name: resultat1
+    shell: ls -lrt
+    register: result
+    ignore_errors: True
+
+  - name: resultat2
+    shell: /bin/something
+    when: result is failed
+ 
+  - command : echo {{ item }}
+    loop : [ 0 , 2 , 4 , 6 , 8 , 10 ]
+    when : item > 5
+  # In older versions of ansible use ``success``, now both are valid but succeeded uses the correct tense.
+  - name: resultat3
+    shell: /bin/something_else
+    when: result is succeeded
+
+  - name: resultat4
+    shell: /bin/still/something_else
+    when: result is skipped

@@ -1,0 +1,20 @@
+---
+
+- hosts: test
+  become: yes
+  become_method: su
+  tasks:
+    - name: Configure Apache
+      shell: " cp  /home/omis/index.html  /var/www/html/ "
+      register: ConfApache
+      #notify: Restart Apache
+
+    - debug:
+        msg: "{{ ConfApache }}"
+
+  #handlers:
+   # - name: Restart Apache
+     # shell: rcapache2 restart
+        
+
+
