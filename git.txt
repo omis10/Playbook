@@ -1,0 +1,20 @@
+git config  --global user.name "omis10"
+git config  --global user.email "benoikken@gmail.com"
+git clone https://github.com/omis10/ScriptFTP.git
+git add omis
+git status 
+git commit -m "fichier omis" omis
+git remote add origin https://github.com/omis10/ScriptFTP.git
+git push -u origin master
+git push -u origin master --force
+https://github.com/omis10/ScriptFTP.git
+
+scp -r -p chemin/vers/dossier/source user@serveur2:chemin/vers/dossier/destination
+
+ftp -in << EOF
+open $HOST
+user $USER $PASSWD
+EOF
+
+git remote -v
+git remote remove origin
